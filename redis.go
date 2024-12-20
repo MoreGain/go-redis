@@ -3,10 +3,14 @@ package redis
 import "context"
 
 type Client struct {
-  ctx context.Context
+	ctx context.Context
+	opt *Options
 }
 
-func NewClient(options *Options) *Client {
-
-  return nil
+func NewClient(opt *Options) *Client {
+	opt.init()
+	return &Client{
+		ctx: context.Background(),
+		opt: opt,
+	}
 }
